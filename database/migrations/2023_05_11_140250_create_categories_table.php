@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->varchar('label')->unique()->required();
+            $table->string('label')->unique()->required();
             $table->char('color', 7)->nullable();
             $table->text('picture')->nullable();
             $table->timestamps();

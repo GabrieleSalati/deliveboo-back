@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->float('total_bill', 6, 2)->required()->unsigned();
             $table->float('bill_no_shipping', 6, 2)->required()->unsigned();
-            $table->varchar('guest_name')->required();
+            $table->string('guest_name')->required();
             $table->string('email')->required();
             $table->string('address')->required();
-            $table->numeric('telephone', 10)->nullable();
+            $table->bigInteger('telephone')->nullable()->unsigned();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

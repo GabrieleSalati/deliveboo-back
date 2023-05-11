@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->numeric('p_iva', 11)->required()->unique()->unsigned();
+            $table->bigInteger('p_iva')->required()->unique()->unsigned();
             $table->string('name')->required();
             $table->string('address')->required()->unique();
             $table->text('picture')->nullable();
