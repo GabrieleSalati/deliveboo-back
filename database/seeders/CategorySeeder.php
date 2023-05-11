@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
         foreach ($labels as $label) {
             $category = new Category();
             $category->label = $label;
-            $category->picture = asset('images/categories/' . $label . '.jpg');
+            $category->picture = asset('storage/app/public/' . $label . '.jpg');
             $category->color = $faker->hexColor();
 
             $category->save();
