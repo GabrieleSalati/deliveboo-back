@@ -28,15 +28,16 @@ class DishOrderSeeder extends Seeder
         //         }
                 
         //     }
+        
+        // TODO ciclare anche per ordine
         $order = Order::find(1);
-        $dish = Dish::all()->pluck('id');
+        $dishes = Dish::where('restaurant_id',1)->pluck('id');
 
-        foreach ($dishIds as $dishId) {
-            $dish = Dish::find($dishId);
-            $order->dishes()->attach($dish->id, ['quantity' => rand(1, 10)]);
+        foreach ($dishes as $dish) {
+            $dishid = Dish::find($dish);
+            $order->dishes()->attach($dishid->id, ['quantity' => rand(1, 10)]);
         }
 
-        $order->dishes()->attach($dish->id, ['quantity' => rand(1, 10)]);
+        // $order->dishes()->attach($dish->id, ['quantity' => rand(1, 10)]);
     }
 }
-
