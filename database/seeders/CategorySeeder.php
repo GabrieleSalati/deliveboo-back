@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         $categories = [
             [
