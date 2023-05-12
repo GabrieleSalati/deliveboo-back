@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dish;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Restaurant;
+
 
 class DishSeeder extends Seeder
 {
@@ -318,7 +320,7 @@ class DishSeeder extends Seeder
         ];
 
         foreach ($dishes as $dish) {
-            Restaurant::create([
+            Dish::create([
                 'restaurant_id' => $dish['restaurant_id'],
                 'name' => $dish['name'],
                 'description' => $dish['description'],
