@@ -26,7 +26,7 @@ class RestaurantSeeder extends Seeder
             [
                 'user_id' => '2',
                 'p_iva' => '12345678910',
-                'name' => 'Ristorante il Piacere',               
+                'name' => 'Ristorante il Piacere',
                 'address' => 'Via Dante, 3, Milano',
                 'picture' => 'https://www.tavernaoreste.it/wp-content/uploads/2022/03/Taverna-da-Oreste-Lazise-4-_f494d1.jpg',
             ],
@@ -47,7 +47,7 @@ class RestaurantSeeder extends Seeder
             [
                 'user_id' => '5',
                 'p_iva' => '45678910123',
-                'name' => 'Pizzeria Mythos',
+                'name' => 'Mythos',
                 'address' => 'Via Bergamo, 7, Milano',
                 'picture' => 'https://img.italiaonline.it/0WO5p000002tAbHGAU_Mythosesterno.jpg',
             ],
@@ -88,7 +88,7 @@ class RestaurantSeeder extends Seeder
             ],
         ];
 
-        foreach($restaurants as $restaurant) {
+        foreach ($restaurants as $restaurant) {
             Restaurant::create([
                 'user_id' => $restaurant['user_id'],
                 'p_iva' => $restaurant['p_iva'],
