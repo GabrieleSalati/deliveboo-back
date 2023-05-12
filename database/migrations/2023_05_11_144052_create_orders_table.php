@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('guest_name')->required();
             $table->string('email')->required();
             $table->string('address')->required();
-            $table->bigInteger('telephone')->nullable()->unsigned();
+            $table->string('telephone')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
