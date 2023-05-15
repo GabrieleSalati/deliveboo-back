@@ -19,7 +19,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->bigInteger('p_iva')->required()->unique()->unsigned();
-            $table->string('name')->required();
+            $table->string('restaurant_name')->required();
             $table->string('address')->required()->unique();
             $table->text('picture')->nullable();
             $table->timestamps();
