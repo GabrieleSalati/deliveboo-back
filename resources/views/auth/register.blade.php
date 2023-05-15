@@ -71,7 +71,8 @@
 
                                 <div class="col-md-3">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" placeholder="Confermare password">
+                                        name="password_confirmation" value="{{ old('password-confirm') }}" required
+                                        autocomplete="new-password">
                                 </div>
                             </div>
 
