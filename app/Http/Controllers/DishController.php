@@ -36,6 +36,13 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $dish = new Dish();
+        $dish->fill($data);
+        $dish->save();
+        // todo aggiungere route
+        return to_route('', $dish)
+            ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
+            ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
     }
 
     /**
