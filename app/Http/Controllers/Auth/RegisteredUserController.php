@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'string', 'max:255'.Restaurant::class],
+            'restaurant_name' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'p_iva' => ['required', 'numeric', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'picture' => ['nullable', 'image', 'mimes: jpg, png, jpeg']
