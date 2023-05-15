@@ -44,8 +44,8 @@ class DishController extends Controller
         $dish->save();
         // todo aggiungere route
         return to_route('', $dish)
-                ->with('message_type', 'alert-success')
-                ->with('message_content', 'Piatto aggiunto correttamente');
+                ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
+                ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
     }
 
     /**
