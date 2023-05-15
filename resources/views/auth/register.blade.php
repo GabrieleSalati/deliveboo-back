@@ -73,15 +73,15 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="p-iva"
+                                <label for="p_iva"
                                     class="col-md-3 col-form-label text-md-right">{{ __('P.iva') }}</label>
 
                                 <div class="col-md-3">
-                                    <input id="p-iva" type="text"
-                                        class="form-control @error('p-iva') is-invalid @enderror" name="p-iva"
-                                        value="{{ old('p-iva') }}" required autocomplete="p-iva" autofocus>
+                                    <input id="p_iva" type="text"
+                                        class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
+                                        value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus>
 
-                                    @error('p-iva')
+                                    @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -90,16 +90,16 @@
 
 
 
-                                <label for="restaurant-name"
+                                <label for="restaurant_name"
                                     class="col-md-3 col-form-label text-md-right">{{ __('Restaurant name') }}</label>
 
                                 <div class="col-md-3">
-                                    <input id="restaurant-name" type="text"
-                                        class="form-control @error('restaurant-name') is-invalid @enderror"
-                                        name="restaurant-name" value="{{ old('restaurant-name') }}" required
-                                        autocomplete="restaurant-name" autofocus>
+                                    <input id="restaurant_name" type="text"
+                                        class="form-control @error('restaurant_name') is-invalid @enderror"
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required
+                                        autocomplete="restaurant_name" autofocus>
 
-                                    @error('restaurant-name')
+                                    @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -134,7 +134,7 @@
                                 </div>
 
                                 <div class="mb-4 row mb-0">
-                                    <div class="col-md-6 offset-md-4">
+                                    <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Register') }}
                                         </button>
