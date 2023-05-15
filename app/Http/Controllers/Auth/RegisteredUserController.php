@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Restaurant;
 use App\Models\Category;
+use Illuminate\Support\Arr;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -40,6 +41,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'p_iva' => ['required', 'string', 'numeric','size:11', 'unique:'.Restaurant::class],
+            'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
+            'picture' => ['nullable', 'image']
         ]);
 
         $user = User::create([
