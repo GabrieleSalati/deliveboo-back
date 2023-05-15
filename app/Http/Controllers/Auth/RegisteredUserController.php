@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'restaurant_name' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'p_iva' => ['required', 'string', 'numeric','size:11', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'picture' => ['nullable', 'image']
@@ -55,7 +56,7 @@ class RegisteredUserController extends Controller
         $restaurant = Restaurant::create([
             'user_id' => $user->id,
             'p_iva' => $request->p_iva,
-            'name' => $request->name,
+            'restaurant_name' => $request->name,
             'address' => $request->address,
             'picture' => $request->picture,
         ]);
