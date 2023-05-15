@@ -22,9 +22,9 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Dish $dish)
+    public function create()
     {
-        $dish = new Dish;
+        // $dish = new Dish;
         return view('admin.dishes.create');
     }
 

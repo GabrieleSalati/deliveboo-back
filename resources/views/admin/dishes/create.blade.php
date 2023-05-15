@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Aggiungi piatto') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('dishes.create') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('dishes.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-4 row">
