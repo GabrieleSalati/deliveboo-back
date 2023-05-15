@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class DishController extends Controller
 {
