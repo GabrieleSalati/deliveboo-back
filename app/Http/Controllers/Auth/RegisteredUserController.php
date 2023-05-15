@@ -41,17 +41,18 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
+            'restaurant_name' => ['required', 'string', 'max:255'.Restaurant::class],
             'p_iva' => ['required', 'numeric', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
-            'picture' => ['nullable', 'image']
+            'picture' => ['nullable', 'image', 'mimes: jpg, png, jpeg']
         ],
         [
-            'name.required' => 'Il nome e cognome dell\'utente è obbligatorio',
-            'name.string' => 'Il nome e cognome dell\'utente deve essere una stringa',
+            'name.required' => 'Nome e cognome dell\'utente sono obbligatori',
+            'name.string' => 'Nome e cognome dell\'utente devono essere una stringa',
   
-            'email.required' => 'La mail è obbligatorio',
+            'email.required' => 'La mail è obbligatoria',
             'email.string' => 'L\'indirizzo email deve essere una stringa',
+            'email.unique' => 'L\'indirizzo email inserito risulta essere già registrato',
 
             'password.required' =>'La password è obbligatoria',
   
@@ -60,12 +61,14 @@ class RegisteredUserController extends Controller
 
             'p_iva.required' => 'La partita Iva è obbligatoria',
             'p_iva.numeric' => 'La partita Iva deve essere un numero di 11 cifre',
+            'p_iva.unique' => 'La partita Iva inserita risulta essere già registrata',
 
             'address.required' => 'L\'indirizzo è obbligatorio',
             'address.string' => 'L\'indirizzo deve essere una stringa',
+            'address.unique' => 'L\'indirizzo inserito risulta essere già registrato',
             
-            'picture.image' => 'Il file caricato deve essere un immagine',
-            'picture.mimes' => 'le estenzioni dei file accettate sono: jpg, png, jpeg.',
+            'picture.image' => 'Il file caricato deve essere un\' immagine',
+            'picture.mimes' => 'Le estensioni dei file accettate sono: jpg, png, jpeg.',
             
           ]);
 
