@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DishController;
+ 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth'])->resource('/dishes', DishController::class);
 require __DIR__.'/auth.php';
