@@ -36,6 +36,9 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $this->validation($request->all());
+
         $dish = new Dish();
         $dish->fill($data);
         $dish->save();
