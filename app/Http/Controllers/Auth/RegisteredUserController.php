@@ -45,7 +45,29 @@ class RegisteredUserController extends Controller
             'p_iva' => ['required', 'numeric', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'picture' => ['nullable', 'image']
-        ]);
+        ],
+        [
+            'name.required' => 'Il nome e cognome dell\'utente è obbligatorio',
+            'name.string' => 'Il nome e cognome dell\'utente deve essere una stringa',
+  
+            'email.required' => 'La mail è obbligatorio',
+            'email.string' => 'L\'indirizzo email deve essere una stringa',
+
+            'password.required' =>'La password è obbligatoria',
+  
+            'restaurant_name.required' => 'Il nome della tua attività è obbligatoria',
+            'restaurant_name.string' => 'Il nome della tua attività deve essere una stringa',
+
+            'p_iva.required' => 'La partita Iva è obbligatoria',
+            'p_iva.numeric' => 'La partita Iva deve essere un numero di 11 cifre',
+
+            'address.required' => 'L\'indirizzo è obbligatorio',
+            'address.string' => 'L\'indirizzo deve essere una stringa',
+            
+            'picture.image' => 'Il file caricato deve essere un immagine',
+            'picture.mimes' => 'le estenzioni dei file accettate sono: jpg, png, jpeg.',
+            
+          ]);
 
         $user = User::create([
             'name' => $request->name,
