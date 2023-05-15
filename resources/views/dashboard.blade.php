@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    @include('admin.restaurants.show')
                 </div>
             </div>
         </div>
