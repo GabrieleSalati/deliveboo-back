@@ -10,6 +10,9 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+ protected $fillable = [
+        'user_id', 'p_iva', 'restaurant_name', 'restaurant_name','address','picture '];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
