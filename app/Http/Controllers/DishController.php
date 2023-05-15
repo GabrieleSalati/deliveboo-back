@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
+
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +19,10 @@ class DishController extends Controller
      */
     public function index()
     {
-        
+      $restaurant_id = Auth::user()->restaurant->id;
+      $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+  
+      return view('admin.dishes.index')->with('dishes', $dishes);
     }
 
     /**
@@ -26,7 +33,7 @@ class DishController extends Controller
     public function create()
     {
       // todo aggiungere route
-      return view();
+      // return view();
     }
 
     /**
