@@ -17,7 +17,7 @@
 
 								<div class="col-md-3">
 									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-										value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Inserire Nome">
+										value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Inserire Nome">
 
 									@error('name')
 										<span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 
 							<div class="col-md-3">
 								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-									value="{{ old('email') }}" required autocomplete="email" placeholder="Inserire E-mail">
+									value="{{ old('email') }}" autocomplete="email" placeholder="Inserire E-mail">
 
 								<div class="col-md-3">
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -81,7 +81,7 @@
 
 									<div class="col-md-3">
 										<input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-											value="{{ old('password-confirm') }}" required autocomplete="new-password">
+											value="{{ old('password-confirm') }}" autocomplete="new-password">
 									</div>
 								</div>
 
@@ -91,7 +91,7 @@
 
 									<div class="col-md-3">
 										<input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-											value="{{ old('p_iva') }}" required autocomplete="p_iva" autofocus placeholder="Inserire P.Iva">
+											value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus placeholder="Inserire P.Iva">
 
 										<div class="mb-4 row">
 											<label for="address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
@@ -113,7 +113,7 @@
 												<div class="col-md-3">
 													<input id="restaurant_name" type="text"
 														class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name"
-														value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus
+														value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus
 														placeholder="Inserire nome ristorante">
 
 													@error('restaurant_name')
@@ -129,7 +129,7 @@
 
 												<div class="col-md-10">
 													<input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-														name="address" value="{{ old('Address') }}" required autocomplete="address" autofocus
+														name="address" value="{{ old('Address') }}" autocomplete="address" autofocus
 														placeholder="Inserire indirizzo">
 
 													@error('address')
@@ -154,7 +154,7 @@
 													@enderror
 												</div>
 
-												<div class="mb-4 row mb-0">
+												<div class="mb-4 row">
 													<div class="col-md-4">
 														<button type="submit" class="btn btn-primary">
 															{{ __('Register') }}
