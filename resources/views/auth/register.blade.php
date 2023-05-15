@@ -13,7 +13,7 @@
 
 							<div class="mb-4
                             row">
-								<label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Nome') }}</label>
+								<label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Nome e Cognome') }}</label>
 
 								<div class="col-md-3">
 									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -30,7 +30,7 @@
 
 								<div class="col-md-3">
 									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-										value="{{ old('email') }}" autocomplete="email">
+										value="{{ old('email') }}" autocomplete="email" placeholder="Inserire E-mail">
 
 									@error('email')
 										<span class="invalid-feedback" role="alert">
@@ -40,13 +40,12 @@
 								</div>
 							</div>
 
-							<div class="col-md-3">
-								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-									value="{{ old('email') }}" autocomplete="email" placeholder="Inserire E-mail">
+							<div class="mb-4 row">
+								<label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Password') }}</label>
 
 								<div class="col-md-3">
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-										name="password" autocomplete="new-password">
+										name="password" value="{{ old('password') }}" placeholder="Inserire password">
 
 									@error('password')
 										<span class="invalid-feedback" role="alert">
@@ -55,112 +54,81 @@
 									@enderror
 								</div>
 
+								<label for="password-confirm"
+									class="col-md-3 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+
 								<div class="col-md-3">
-									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-										name="password" value="{{ old('password') }}" placeholder="Inserire password">
+									<input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+										value="{{ old('password-confirm') }}" autocomplete="new-password"placeholder="Confermare Password">
+								</div>
+							</div>
 
-									<div class="col-md-3">
-										<input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-											autocomplete="new-password">
-									</div>
+							<div class="mb-4 row">
+								<label for="p_iva" class="col-md-3 col-form-label text-md-right">{{ __('P.iva') }}</label>
+
+								<div class="col-md-3">
+									<input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
+										value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus placeholder="Inserire P.Iva">
+
+									@error('p_iva')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
 								</div>
 
-								<div class="mb-4 row">-
-									<label for="p_iva" class="col-md-3 col-form-label text-md-right">{{ __('P.iva') }}</label>
-
-									<div class="col-md-3">
-										<input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-											value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus>
-
-										@error('p_iva')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-										@enderror
-									</div>
-
-									<div class="col-md-3">
-										<input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-											value="{{ old('password-confirm') }}" autocomplete="new-password">
-									</div>
-								</div>
+								<label for="restaurant_name"
+									class="col-md-3 col-form-label text-md-right">{{ __('Nome del ristorante') }}</label>
 
 								<div class="col-md-3">
 									<input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror"
-										name="restaurant_name" value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus>
+										name="restaurant_name" value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus
+										placeholder="Inserire nome ristorante">
 
-									<div class="col-md-3">
-										<input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-											value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus placeholder="Inserire P.Iva">
+									@error('restaurant_name')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+							</div>
 
-										<div class="mb-4 row">
-											<label for="address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+							<div class="mb-4 row">
+								<label for="Address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
-											<div class="col-md-10">
-												<input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-													name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+								<div class="col-md-10">
+									<input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address"
+										value="{{ old('Address') }}" autocomplete="address" autofocus placeholder="Inserire indirizzo">
 
-												@error('address')
-													<span class="invalid-feedback" role="alert">
-														<strong>{{ $message }}</strong>
-													</span>
-												@enderror
-											</div>
+									@error('address')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
 
-											<div class="my-3 row">
-												<label for="picture" class="col-md-4 col-form-label text-md-right">{{ __('Foto ristorante') }}</label>
+								<div class="my-3 row">
+									<label for="picture" class="col-md-4 col-form-label text-md-right">{{ __('Foto ristorante') }}</label>
 
-												<div class="col-md-3">
-													<input id="restaurant_name" type="text"
-														class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name"
-														value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus
-														placeholder="Inserire nome ristorante">
+									<div class="mb-3">
+										<input class="form-control @error('picture') is-invalid @enderror" type="file" id="picture"
+											name="picture">
+									</div>
 
-													@error('restaurant_name')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
-												</div>
-											</div>
+									@error('picture')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
 
-											<div class="mb-4 row">
-												<label for="Address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
-
-												<div class="col-md-10">
-													<input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
-														name="address" value="{{ old('Address') }}" autocomplete="address" autofocus
-														placeholder="Inserire indirizzo">
-
-													@error('address')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
-												</div>
-
-												<div class="my-3 row">
-													<label for="picture" class="col-md-4 col-form-label text-md-right">{{ __('Foto ristorante') }}</label>
-
-													<div class="mb-3">
-														<input class="form-control @error('picture') is-invalid @enderror" type="file" id="picture"
-															name="picture">
-													</div>
-
-													@error('picture')
-														<span class="invalid-feedback" role="alert">
-															<strong>{{ $message }}</strong>
-														</span>
-													@enderror
-												</div>
-
-												<div class="mb-4 row">
-													<div class="col-md-4">
-														<button type="submit" class="btn btn-primary">
-															{{ __('Register') }}
-														</button>
-													</div>
-												</div>
+								<div class="mb-4 row mb-0">
+									<div class="col-md-4">
+										<button type="submit" class="btn btn-primary">
+											{{ __('Register') }}
+										</button>
+									</div>
+								</div>
 						</form>
 					</div>
 				</div>
