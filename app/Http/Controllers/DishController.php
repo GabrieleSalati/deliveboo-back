@@ -92,4 +92,34 @@ class DishController extends Controller
     {
         //
     }
+    
+    private function validation($data) {
+        $validator = Validator::make(
+           $data,
+           [
+             'name' =>'required|string',
+             'description' =>'nullable|string',
+             'price' =>'required|numeric|min:0',
+             'picture' =>'nullable|image|mimes: jpg, png, jpeg',
+             'visible' =>'boolean',
+           ],
+           [
+             'name.required' => 'Il nome del piatto è obbligatorio',
+             'name.string' => 'Il nome del piatto deve essere una stringa',
+   
+             'description.string' => 'La descrizione del piatto deve essere una stringa',
+   
+             'price.required' => 'Il prezzo del piatto è obbligatorio',
+             'price.numeric' => 'Il prezzo del piatto deve essere un numero',
+             'price.min' => 'Il prezzo del piatto deve essere un numero maggiore di 0',
+   
+             'picture.image' => 'Il file caricato deve essere un immagine',
+             'picture.mimes' => 'le estenzioni dei file accettate sono: jpg, png, jpeg.',
+             
+             'visible.boolean' => 'Il valore deve essere un booleano',
+           ]
+           )->validate();
+           return $validator;
+       }
+   }
 }
