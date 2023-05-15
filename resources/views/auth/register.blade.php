@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Registrati') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -13,7 +13,7 @@
 
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-3 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                                 <div class="col-md-3">
                                     <input id="name" type="text"
@@ -30,7 +30,7 @@
 
 
                                 <label for="email"
-                                    class="col-md-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-3 col-form-label text-md-right">{{ __('Indirizzo E-mail') }}</label>
 
                                 <div class="col-md-3">
                                     <input id="email" type="email"
@@ -64,7 +64,7 @@
 
 
                                 <label for="password-confirm"
-                                    class="col-md-3 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-3 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
 
                                 <div class="col-md-3">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -91,7 +91,7 @@
 
 
                                 <label for="restaurant_name"
-                                    class="col-md-3 col-form-label text-md-right">{{ __('Restaurant name') }}</label>
+                                    class="col-md-3 col-form-label text-md-right">{{ __('Nome del ristorante') }}</label>
 
                                 <div class="col-md-3">
                                     <input id="restaurant_name" type="text"
@@ -109,7 +109,7 @@
 
                             <div class="mb-4 row">
                                 <label for="Address"
-                                    class="col-md-2 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                                 <div class="col-md-10">
                                     <input id="Address" type="text"
@@ -126,7 +126,7 @@
 
                                 <div class="my-3 row">
                                     <label for="picture"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Picture') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Foto ristorante') }}</label>
 
                                     <div class="mb-3">
                                         <input class="form-control" type="file" id="picture" name="picture">
