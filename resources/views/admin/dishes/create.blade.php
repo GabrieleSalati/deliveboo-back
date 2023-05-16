@@ -8,7 +8,7 @@
 					<div class="card-header">{{ __('Aggiungi piatto') }}</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{ route('dishes.create') }}" enctype="multipart/form-data">
+						<form method="POST" action="{{ route('dishes.store') }}" enctype="multipart/form-data">
 							@csrf
 
 							<div class="mb-4 row">
@@ -16,7 +16,7 @@
 
 								<div class="col-md-3">
 									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-										value="{{ old('name') }}" required autocomplete="name" autofocus>
+										value="{{ old('name') }}" autocomplete="name" autofocus>
 
 									@error('name')
 										<span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
 								<div class="col-md-3">
 									<input id="price" type="price" class="form-control @error('price') is-invalid @enderror" name="price"
-										required autocomplete="new-price">
+										autocomplete="new-price">
 
 									@error('price')
 										<span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
 									</div>
 								</div>
 
-								<div class="mb-4 row mb-0">
+								<div class="mb-4 row">
 									<label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Visibilita\'') }}</label>
 									<select id="visible" name="visible" class="form-select" aria-label="Default select example">
 										<option value="1">si</option>
@@ -71,10 +71,10 @@
 									</select>
 								</div>
 
-								<div class="mb-4 row mb-0">
+								<div class="mb-4 row ">
 									<div class="col-md-4">
 										<button type="submit" class="btn btn-primary">
-											{{ __('Add dish') }}
+											{{ __('Crea piatto') }}
 										</button>
 									</div>
 								</div>

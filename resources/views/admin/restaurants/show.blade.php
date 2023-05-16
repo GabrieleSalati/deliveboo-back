@@ -19,7 +19,7 @@
 						<strong> Email: </strong> {{ $user_data['email'] }}
 					</p>
 
-					<a href="#" class="btn btn-primary">Il mio Menù</a>
+					<a href="{{ route('dishes.index') }}" class="btn btn-primary">Il mio Menù</a>
 				</div>
 			</section>
 		</div>

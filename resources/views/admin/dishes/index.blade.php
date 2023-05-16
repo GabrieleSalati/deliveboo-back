@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div id="buttons" class="mt-5">
-			<a href="{{ route('admin.dishes.create') }}" type="button" class="btn btn-primary">Aggiungi Piatto</a>
+			<a href="{{ route('dishes.create') }}" type="button" class="btn btn-primary">Aggiungi Piatto</a>
 		</div>
 
 		<table class="table table-striped mt-2">
