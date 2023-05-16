@@ -99,10 +99,12 @@ class DishController extends Controller
      * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dish $dish)
+     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+        return redirect()->route('dishes.index');
     }
+    
     private function validation($data) {
      $validator = Validator::make(
         $data,
