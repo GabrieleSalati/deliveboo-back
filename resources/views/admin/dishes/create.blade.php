@@ -45,8 +45,8 @@
 								<label for="price" class="col-md-3 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
 								<div class="col-md-3">
-									<input id="price" type="price" class="form-control @error('price') is-invalid @enderror" name="price"
-										autocomplete="new-price">
+									<input id="price" type="price" class="form-control  @error('price') is-invalid @enderror" name="price"
+										autocomplete="new-price" value="{{ old('price') }}">
 
 									@error('price')
 										<span class="invalid-feedback" role="alert">

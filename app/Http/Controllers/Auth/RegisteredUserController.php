@@ -23,8 +23,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $category = Category::all();
-        return view('auth.register');
+        $categories = Category::all();
+        return view('auth.register', compact("categories"));
         
     }
 
@@ -44,8 +44,9 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'p_iva' => ['required', 'numeric', 'digits:11', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
-            'picture' => ['nullable', 'image', 'mimes: jpg, png, jpeg']
-        ],
+            'picture' => ['nullable', 'image', 'mimes: jpg, png, jpeg'],
+            'categories'=> ["nullable",'exists:categories,id']
+          ], 
         [
             'name.required' => 'Nome e cognome dell\'utente sono obbligatori',
             'name.string' => 'Nome e cognome dell\'utente devono essere una stringa',
@@ -84,9 +85,10 @@ class RegisteredUserController extends Controller
             'restaurant_name' => $request->restaurant_name,
             'address' => $request->address,
             'picture' => $request->picture,
+            // 'categories' =>$request->categories
         ]);
 
-        if(Arr::exists($data, "categories")) $restaurant->category()->attach($data["categories"]);
+        if(Arr::exists($data, "categories")) $restaurant->categories()->attach($data["categories"]);
         
         event(new Registered($user));
 

@@ -93,8 +93,9 @@
 			</div>
 		</nav>
 
-		<main class="">
+		<main class="container">
 			@yield('content')
+			@yield('modals')
 		</main>
 	</div>
 </body>

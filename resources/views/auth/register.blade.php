@@ -122,6 +122,19 @@
 									@enderror
 								</div>
 
+								<label for="category">Categorie:</label>
+								<div class="d-flex flex-row">
+									@foreach ($categories as $category)
+										<div class="form-check">
+
+											<label class="form-check-label" for="category-{{ $category->id }}">{{ $category->label }}</label>
+
+											<input class="form-check-input" type="checkbox" name="category[]" id="category-{{ $category->id }}"
+												value="{{ $category->id }}" {{-- @if (in_array($category->id, old('categories', $project_technologies ?? []))) checked @endif --}}>
+										</div>
+									@endforeach
+								</div>
+
 								<div class="mb-4 row">
 									<div class="col-md-4">
 										<button type="submit" class="btn btn-primary">

@@ -110,7 +110,7 @@ class DishController extends Controller
         $data,
         [
           'name' =>'required|string',
-          'description' =>'nullable|string',
+          'description' =>'required|string',
           'price' =>'required|numeric|min:0',
           'picture' =>'nullable|image|mimes: jpg, png, jpeg',
           'visible' =>'boolean',
@@ -120,6 +120,7 @@ class DishController extends Controller
           'name.string' => 'Il nome del piatto deve essere una stringa',
 
           'description.string' => 'La descrizione del piatto deve essere una stringa',
+          'description.required' => 'La descrizione del piatto è obbligatoria',
 
           'price.required' => 'Il prezzo del piatto è obbligatorio',
           'price.numeric' => 'Il prezzo del piatto deve essere un numero',
