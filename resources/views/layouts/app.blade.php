@@ -99,6 +99,9 @@
                 @yield('content')
             </div>
         </main>
+
+        @yield('modals')
+
     </div>
 </body>
 

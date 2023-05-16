@@ -25,7 +25,10 @@
                         <td>{{ $dish->price }}€</td>
                         <td>{{ $dish->visible }}</td>
                         <td class="action-cell"><a href="{{ route('dishes.edit', [$dish]) }}"><i
-                                    class="bi bi-wrench-adjustable"></i></a></td>
+                                    class="bi bi-wrench-adjustable"></i></a>
+                            <button class="bi bi-trash text-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete-{{ $dish->id }}"></button>
+                        </td>
                     </tr>
                 @empty
                     <tr>
@@ -34,5 +37,31 @@
                 @endforelse
             </tbody>
         </table>
+        @section('modals')
+            @foreach ($dishes as $dish)
+                <div class="modal fade" id="delete-{{ $dish->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $dish->name }}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Vuoi davvero eliminare questo piatto?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                <form action="{{ route('dishes.destroy', $dish) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-primary">Conferma</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endsection
     </div>
 @endsection
