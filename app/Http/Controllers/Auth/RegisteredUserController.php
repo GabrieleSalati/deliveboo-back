@@ -86,7 +86,7 @@ class RegisteredUserController extends Controller
             'picture' => $request->picture,
         ]);
 
-        if(Arr::exists($data, "category")) $restaurant->category()->attach($data["category"]);
+        if(Arr::exists($data, "categories")) $restaurant->category()->attach($data["categories"]);
         
         event(new Registered($user));
 
