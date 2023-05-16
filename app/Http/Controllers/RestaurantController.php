@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -46,7 +48,9 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        $user_data = Auth::user();
+        $restaurant = Auth::user()->restaurant;
+        return view('admin.restaurants.show', compact('restaurant', 'user_data'));
     }
 
     /**
