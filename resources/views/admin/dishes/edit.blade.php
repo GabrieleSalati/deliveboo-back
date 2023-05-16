@@ -19,7 +19,7 @@
                                 <div class="col-md-3">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" autocomplete="name" autofocus>
+                                        value="{{ old('name', $dish->name) }}" autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
                                 <div class="col-md-9">
                                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                                        rows="3">{{ old('description') }}</textarea>
+                                        rows="3">{{ old('description', $dish->description) }}</textarea>
 
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                                 <div class="col-md-3">
                                     <input id="price" type="price"
                                         class="form-control @error('price') is-invalid @enderror" name="price"
-                                        autocomplete="new-price">
+                                        autocomplete="new-price" value="{{ old('name', $dish->price) }}">
 
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
