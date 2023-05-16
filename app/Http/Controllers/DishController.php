@@ -104,6 +104,8 @@ class DishController extends Controller
         $dish->delete();
         return redirect()->route('dishes.index');
     }
+    
+    
     private function validation($data)
     {
         $validator = Validator::make(

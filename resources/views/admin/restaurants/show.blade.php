@@ -9,7 +9,7 @@
 					<h5 class="card-title mb-3">{{ $restaurant->restaurant_name }}</h5>
 
                     <p class="card-text">
-						<strong> Categoria: </strong>
+						<strong> Categorie: </strong>
                         @foreach ($restaurant->categories as $category)                       
                                 {!! $category->getPillHTML() !!}                                                                               
                         @endforeach 
