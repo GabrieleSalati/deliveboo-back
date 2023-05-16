@@ -19,10 +19,10 @@ class DishController extends Controller
      */
     public function index()
     {
-      $restaurant_id = Auth::user()->restaurant->id;
-      $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
-  
-      return view('admin.dishes.index')->with('dishes', $dishes);
+        $restaurant_id = Auth::user()->restaurant->id;
+        $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+
+        return view('admin.dishes.index')->with('dishes', $dishes);
     }
 
     /**
@@ -32,8 +32,8 @@ class DishController extends Controller
      */
     public function create()
     {
-      // todo aggiungere route
-      return view('admin.dishes.create');
+        // todo aggiungere route
+        return view('admin.dishes.create');
     }
 
     /**
@@ -46,13 +46,13 @@ class DishController extends Controller
     {
         $data = $this->validation($request->all());
 
-        $dish = new Dish();        
+        $dish = new Dish();
         $dish->fill($data);
         $dish->save();
         // todo aggiungere route
         return to_route('dishes.index')
-                ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
-                ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
+            ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
+            ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
     }
 
     /**
@@ -74,7 +74,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-      
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -99,35 +99,36 @@ class DishController extends Controller
     {
         //
     }
-    private function validation($data) {
-     $validator = Validator::make(
-        $data,
-        [
-          'name' =>'required|string',
-          'description' =>'nullable|string',
-          'price' =>'required|numeric|min:0',
-          'picture' =>'nullable|image|mimes: jpg, png, jpeg',
-          'visible' =>'boolean',
-          'restaurant_id' =>'numeric|required'
-        ],
-        [
-          'name.required' => 'Il nome del piatto è obbligatorio',
-          'name.string' => 'Il nome del piatto deve essere una stringa',
+    private function validation($data)
+    {
+        $validator = Validator::make(
+            $data,
+            [
+                'name' => 'required|string',
+                'description' => 'nullable|string',
+                'price' => 'required|numeric|min:0',
+                'picture' => 'nullable|image|mimes: jpg, png, jpeg',
+                'visible' => 'boolean',
+                'restaurant_id' => 'numeric|required'
+            ],
+            [
+                'name.required' => 'Il nome del piatto è obbligatorio',
+                'name.string' => 'Il nome del piatto deve essere una stringa',
 
-          'description.string' => 'La descrizione del piatto deve essere una stringa',
+                'description.string' => 'La descrizione del piatto deve essere una stringa',
 
-          'price.required' => 'Il prezzo del piatto è obbligatorio',
-          'price.numeric' => 'Il prezzo del piatto deve essere un numero',
-          'price.min' => 'Il prezzo del piatto deve essere un numero maggiore di 0',
+                'price.required' => 'Il prezzo del piatto è obbligatorio',
+                'price.numeric' => 'Il prezzo del piatto deve essere un numero',
+                'price.min' => 'Il prezzo del piatto deve essere un numero maggiore di 0',
 
-          'restaurant_id.numeric' => 'Il prezzo del piatto deve essere un numero',
-          'restaurant_id.required' => 'Il prezzo del piatto è obligatorio',
+                'restaurant_id.numeric' => 'Il prezzo del piatto deve essere un numero',
+                'restaurant_id.required' => 'Il prezzo del piatto è obligatorio',
 
-          'picture.image' => 'Il file caricato deve essere un immagine',
-          'picture.mimes' => 'le estenzioni dei file accettate sono: jpg, png, jpeg.',
-          
-          'visible.boolean' => 'Il valore deve essere un booleano',
-        ]
+                'picture.image' => 'Il file caricato deve essere un immagine',
+                'picture.mimes' => 'le estenzioni dei file accettate sono: jpg, png, jpeg.',
+
+                'visible.boolean' => 'Il valore deve essere un booleano',
+            ]
         )->validate();
         return $validator;
     }
