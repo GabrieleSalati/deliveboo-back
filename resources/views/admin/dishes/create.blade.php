@@ -69,6 +69,8 @@
                                     </div>
                                 </div>
 
+								
+
                                 <div class="mb-4 row">
                                     <label for="visible"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Visibilita\'') }}</label>

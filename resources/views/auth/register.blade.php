@@ -115,6 +115,17 @@
 											name="picture">
 									</div>
 
+									<label for="category">Categorie:</label>
+									<div class="d-flex flex-row">
+										@foreach ($category as $category)
+											<div class="form-check ">
+												<input class="form-check-input" type="checkbox" name="category" value="{{ $category->id }}">
+												<label class="form-check-label" for="category{{ $category->id }}">
+												{{ $category->label }}
+												</label>
+											</div>
+										@endforeach
+									</div>
 									@error('picture')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
