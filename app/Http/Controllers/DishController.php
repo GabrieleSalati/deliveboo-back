@@ -32,8 +32,7 @@ class DishController extends Controller
      */
     public function create()
     {
-      // todo aggiungere route
-      // return view();
+       return view('admin.dishes.create');
     }
 
     /**
@@ -45,14 +44,15 @@ class DishController extends Controller
     public function store(Request $request)
     {
         $data = $this->validation($request->all());
-
-        $dish = new Dish();        
+        $restaurant_id = Auth::user()->restaurant->id;
+        $dish = new Dish();
         $dish->fill($data);
+        $dish->restaurant_id = $restaurant_id;
         $dish->save();
-        // todo aggiungere route
-        return to_route('', $dish)
-                ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
-                ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
+
+        return to_route('dishes.index')
+            ->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
+            ->with('message_content', 'Piatto aggiunto correttamente'); // TODO aggiungere le classi nei form
     }
 
     /**
@@ -74,7 +74,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-      
+      return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -86,7 +86,11 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        //
+        $data = $this->validation($request->all());
+        $dish->update($data);
+        
+        return redirect()->route('dishes.index')->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
+            ->with('message_content', 'Piatto modificato correttamente');
     }
 
     /**
