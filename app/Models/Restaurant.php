@@ -27,6 +27,8 @@ class Restaurant extends Model
     }
 
     public function getImageUri() {
-        return $this->picture ? url('storage/' . $this->picture) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+        return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
     }
+
+    
 }

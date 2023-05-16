@@ -67,7 +67,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Il Mio Ristorante')}}</a>
+                                <a class="dropdown-item" href="{{ url('home') }}">{{__('Il Mio Ristorante')}}</a>
                                 {{-- <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a> --}}
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -86,9 +86,7 @@
         </nav>
 
         <main class="">
-            <div class="container">
-                @yield('content')
-            </div>
+           @yield('content')
         </main>
     </div>
 </body>
