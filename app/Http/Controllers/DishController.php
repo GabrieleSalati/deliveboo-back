@@ -87,7 +87,7 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
         $dish->update($data);
         return redirect()->route('dishes.index')->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
             ->with('message_content', 'Piatto modificato correttamente');;
