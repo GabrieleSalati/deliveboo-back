@@ -7,6 +7,14 @@
 				<img src="{{ $restaurant->getImageUri() }}" class="card-img-top img-fluid" alt="restaurant image">
 				<div class="card-body">
 					<h5 class="card-title mb-3">{{ $restaurant->restaurant_name }}</h5>
+
+                    <p class="card-text">
+						<strong> Categoria: </strong>
+                        @foreach ($restaurant->categories as $category)                       
+                                {!! $category->getPillHTML() !!}                                                                               
+                        @endforeach 
+					</p>
+
 					<p class="card-text">
 						<strong> Indirizzo: </strong> {{ $restaurant->address }}
 					</p>

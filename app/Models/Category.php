@@ -14,4 +14,8 @@ class Category extends Model
     {
         return $this->belongsToMany(Restaurant::class);
     }
+
+    public function getPillHTML() {
+        return '<span class="badge" style="background-color:' . $this->color . '">' . $this->label . '</span>';
+    }
 }
