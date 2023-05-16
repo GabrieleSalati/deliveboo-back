@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Restaurant;
-use App\Models\Category;
+use  App\Models\Category;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Arr;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;

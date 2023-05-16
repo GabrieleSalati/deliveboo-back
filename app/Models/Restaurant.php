@@ -25,4 +25,8 @@ class Restaurant extends Model
     public function dishes() {
         return $this->hasMany(Dish::class);
     }
+
+    public function getImageUri() {
+        return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+    }
 }
