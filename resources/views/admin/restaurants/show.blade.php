@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row d-flex justify-content-center">
 		<div class="col-6">
-            @forelse ($restaurants as $restaurant)                   
+            {{-- @forelse ($restaurants as $restaurant)                    --}}
 			    <section class="card my-5">
                     <img src="{{ $restaurant->getImageUri() }}" class="card-img-top img-fluid" alt="restaurant image">
                     <div class="card-body">
@@ -31,11 +31,11 @@
                         <a href="#" class="btn btn-primary">Il mio Menù</a>
                     </div>
                 </section>
-                @empty
+                {{-- @empty
                     <div class="d-flex justify-content-center align-items-center my-5">
                         <h4>Non hai ancora registrato il tuo ristorante!</h4>
                     </div>
-                @endforelse
+                @endforelse --}}
 		</div>
 	</div>
 @endsection
