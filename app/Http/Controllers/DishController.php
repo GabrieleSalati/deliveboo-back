@@ -31,7 +31,7 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
        return view('admin.dishes.create');
     }
 
@@ -63,7 +63,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+      
     }
 
     /**
@@ -74,7 +74,11 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+      // dd(Auth::user()->restaurant->id);
+      if(Auth::user()->restaurant->id == $dish->restaurant_id)
       return view('admin.dishes.edit', compact('dish'));
+      else
+      die("non sei autorizzato");
     }
 
     /**
@@ -100,9 +104,14 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function destroy(Dish $dish)
-    {
-        $dish->delete();
-        return redirect()->route('dishes.index');
+    {   
+        if(Auth::user()->restaurant->id == $dish->restaurant_id) {
+
+          $dish->delete();
+          return redirect()->route('dishes.index');
+        }
+        else
+          die("non sei autorizzato");
     }
     
     private function validation($data) {
