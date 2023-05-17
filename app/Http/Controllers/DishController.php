@@ -6,7 +6,8 @@ use App\Models\Dish;
 use App\Models\Restaurant;
 
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,7 +44,13 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $this->validation($request->all());
+      $data = $this->validation($request->all());
+      if(Arr::exists($data, 'picture' )) { //$data = array mentre 'picture' = chiave che stai cercando
+          $path = Storage::put('uploads/dishes', $data['picture']); //Metti in public/storage/uploads/restaurants l' immagine che riceviamo
+          $data['picture'] = $path; //METODO 2, nella chiave 'picture' mettici il $path che hai appena salvato alla riga sopra
+        }
+        else $data['picture'] = null;
+        
         $restaurant_id = Auth::user()->restaurant->id;
         $dish = new Dish();
         $dish->fill($data);
@@ -121,7 +128,7 @@ class DishController extends Controller
           'name' =>'required|string',
           'description' =>'required|string',
           'price' =>'required|numeric|min:0',
-          'picture' =>'nullable|image|mimes: jpg, png, jpeg',
+          'picture' =>'nullable|image|mimes:jpg,png,jpeg',
           'visible' =>'boolean',
         ],
         [
