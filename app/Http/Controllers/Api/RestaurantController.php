@@ -15,7 +15,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::orderBy('created_at')->with('categories')->get();
         return response()->json($restaurants);
     }
 
