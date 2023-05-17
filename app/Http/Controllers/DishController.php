@@ -66,7 +66,7 @@ class DishController extends Controller
       // $restaurant_id = Auth::user()->restaurant->id;
       // $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
       if(Auth::user()->restaurant->id == $dish->restaurant_id)
-      return view('admin.dishes.show', compact('dishes'));
+      return view('admin.dishes.show', compact('dish'));
       else
       die("non sei autorizzato a visualizzare questo piatto");
     }

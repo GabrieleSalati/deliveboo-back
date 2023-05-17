@@ -73,7 +73,10 @@
 								</div>
 
 								<div class="mb-4 row ">
-									<div class="col-md-4">
+									<div class="col-md-5">
+										<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i class="bi bi-arrow-left"></i></a>
+									</div>
+									<div class="col-md-5">
 										<button type="submit" class="btn btn-primary">
 											{{ __('Modifica piatto') }}
 										</button>
