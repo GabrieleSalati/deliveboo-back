@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -36,8 +37,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $data = $request->all();
-
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -45,10 +45,10 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'p_iva' => ['required', 'numeric', 'digits:11', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
-            'picture' => ['nullable', 'image', 'mimes: jpg, png, jpeg'],
+            'picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
             'categories'=> ["nullable",'exists:categories,id']
           ], 
-        [
+          [
             'name.required' => 'Nome e cognome dell\'utente sono obbligatori',
             'name.string' => 'Nome e cognome dell\'utente devono essere una stringa',
   
@@ -70,10 +70,15 @@ class RegisteredUserController extends Controller
             'address.unique' => 'L\'indirizzo inserito risulta essere già registrato',
             
             'picture.image' => 'Il file caricato deve essere un\' immagine',
-            'picture.mimes' => 'Le estensioni dei file accettate sono: jpg, png, jpeg.',
+            'picture.mimes' => 'Le estensioni dei file accettate sono: jpg,png,jpeg.',
             
           ]);
-
+        $data = $request->all();
+        
+if(Arr::exists($data, 'picture')) { //$data = array mentre 'picture' = chiave che stai cercando
+          $path = Storage::put('uploads/restaurants', $data['picture']); //Metti in public/storage/uploads/restaurants l' immagine che riceviamo
+          $data['picture'] = $path; //METODO 2, nella chiave 'picture' mettici il $path che hai appena salvato alla riga sopra
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -85,11 +90,11 @@ class RegisteredUserController extends Controller
             'p_iva' => $request->p_iva,
             'restaurant_name' => $request->restaurant_name,
             'address' => $request->address,
-            'picture' => $request->picture,
+            'picture' => $path,
             // 'categories' =>$request->categories
         ]);
-
         if(Arr::exists($data, "categories")) $restaurant->categories()->attach($data["categories"]);
+        
         
         event(new Registered($user));
 

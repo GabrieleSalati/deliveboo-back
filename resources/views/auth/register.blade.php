@@ -129,7 +129,7 @@
 
 											<label class="form-check-label" for="category-{{ $category->id }}">{{ $category->label }}</label>
 
-											<input class="form-check-input" type="checkbox" name="category[]" id="category-{{ $category->id }}"
+											<input class="form-check-input" type="checkbox" name="categories[]" id="category-{{ $category->id }}"
 												value="{{ $category->id }}" {{-- @if (in_array($category->id, old('categories', $project_technologies ?? []))) checked @endif --}}>
 										</div>
 									@endforeach
