@@ -35,7 +35,7 @@
 					</tr>
 				@empty
 					<tr>
-						<td class="text-center" colspan="5">Devi ancora aggiungere un piatto!</td>
+						<td class="text-center" colspan="6">Devi ancora aggiungere un piatto!</td>
 					</tr>
 				@endforelse
 			</tbody>
