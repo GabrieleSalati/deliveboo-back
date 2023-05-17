@@ -98,7 +98,7 @@
 
 								<div class="col-md-10">
 									<input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address"
-										value="{{ old('Address') }}" autocomplete="address" autofocus placeholder="Inserire indirizzo">
+										value="{{ old('address') }}" autocomplete="address" autofocus placeholder="Inserire indirizzo">
 
 									@error('address')
 										<span class="invalid-feedback" role="alert">

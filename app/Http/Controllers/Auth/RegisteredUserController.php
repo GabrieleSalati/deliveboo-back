@@ -75,10 +75,11 @@ class RegisteredUserController extends Controller
           ]);
         $data = $request->all();
         
-if(Arr::exists($data, 'picture')) { //$data = array mentre 'picture' = chiave che stai cercando
+        if(Arr::exists($data, 'picture' )) { //$data = array mentre 'picture' = chiave che stai cercando
           $path = Storage::put('uploads/restaurants', $data['picture']); //Metti in public/storage/uploads/restaurants l' immagine che riceviamo
           $data['picture'] = $path; //METODO 2, nella chiave 'picture' mettici il $path che hai appena salvato alla riga sopra
         }
+        else $data['picture'] = null;
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -90,9 +91,11 @@ if(Arr::exists($data, 'picture')) { //$data = array mentre 'picture' = chiave ch
             'p_iva' => $request->p_iva,
             'restaurant_name' => $request->restaurant_name,
             'address' => $request->address,
-            'picture' => $path,
-            // 'categories' =>$request->categories
+            'picture' => $data['picture'],
         ]);
+        // $restaurant = new Restaurant();
+        // $restaurant->fill($data);
+        // $restaurant->save();
         if(Arr::exists($data, "categories")) $restaurant->categories()->attach($data["categories"]);
         
         
