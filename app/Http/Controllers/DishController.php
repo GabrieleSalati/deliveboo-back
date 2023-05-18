@@ -98,6 +98,12 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
         $data = $this->validation($request->all());
+        
+        if(Arr::exists($data, 'picture')) {
+          if($dish->picture) Storage::delete($dish->picture);
+            $path = Storage::put('uploads/dishes', $data['picture']);
+            $data['picture'] = $path;
+        }
         $dish->update($data);
         
         return redirect()->route('dishes.index')->with('message_type', 'alert-success') // TODO aggiungere le classi nei form
