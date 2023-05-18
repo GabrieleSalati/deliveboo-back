@@ -16,7 +16,7 @@
 
 								<div class="col-md-3">
 									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-										value="{{ old('name') }}" autocomplete="name" autofocus>
+										value="{{ old('name') }}" autocomplete="name" autofocus required>
 
 									@error('name')
 										<span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
 
 								<div class="col-md-9">
 									<textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-									 rows="3">{{ old('description') }}</textarea>
+									 rows="3" required>{{ old('description') }}</textarea>
 
 									@error('description')
 										<span class="invalid-feedback" role="alert">
@@ -45,8 +45,8 @@
 								<label for="price" class="col-md-3 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
 								<div class="col-md-3">
-									<input id="price" type="price" class="form-control  @error('price') is-invalid @enderror" name="price"
-										autocomplete="new-price" value="{{ old('price') }}">
+									<input id="price" type="number" step="0.01" class="form-control  @error('price') is-invalid @enderror"
+										name="price" autocomplete="new-price" value="{{ old('price') }}" required>
 
 									@error('price')
 										<span class="invalid-feedback" role="alert">
@@ -66,8 +66,8 @@
 								<div class="mb-4 row">
 									<label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Visibilita\'') }}</label>
 									<select id="visible" name="visible" class="form-select" aria-label="Default select example">
-										<option value="1">si</option>
-										<option value="2">No</option>
+										<option selected value="0">No</option>
+										<option value="1">Si</option>
 									</select>
 								</div>
 

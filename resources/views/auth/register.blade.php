@@ -85,7 +85,7 @@
 								<div class="col-md-3">
 									<input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror"
 										name="restaurant_name" value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus
-										placeholder="Inserire nome ristorante" required>
+										placeholder="Nome ristorante" required>
 
 									@error('restaurant_name')
 										<span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
 
 									<div class="mb-3">
 										<input class="form-control @error('picture') is-invalid @enderror" type="file" id="picture"
-											name="picture">
+											title="Inserisci un' immagine in formato: jpg,jpeg,png" name="picture">
 									</div>
 
 									@error('picture')
