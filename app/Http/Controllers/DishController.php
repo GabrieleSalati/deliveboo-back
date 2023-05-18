@@ -70,7 +70,12 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-      
+      // $restaurant_id = Auth::user()->restaurant->id;
+      // $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+      if(Auth::user()->restaurant->id == $dish->restaurant_id)
+      return view('admin.dishes.show', compact('dish'));
+      else
+      die("non sei autorizzato a visualizzare questo piatto");
     }
 
     /**
@@ -85,7 +90,7 @@ class DishController extends Controller
       if(Auth::user()->restaurant->id == $dish->restaurant_id)
       return view('admin.dishes.edit', compact('dish'));
       else
-      die("non sei autorizzato");
+      die("non sei autorizzato a modificare questo piatto");
     }
 
     /**
@@ -124,7 +129,7 @@ class DishController extends Controller
           return redirect()->route('dishes.index');
         }
         else
-          die("non sei autorizzato");
+          die("non sei autorizzato a cancellare questo piatto");
     }
     
     private function validation($data) {
