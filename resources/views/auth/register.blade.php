@@ -8,7 +8,7 @@
 					<div class="card-header">{{ __('Registrati') }}</div>
 
 					<div class="card-body">
-						<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+						<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="return validateForm()">
 							@csrf
 
 							<div class="mb-4
@@ -17,7 +17,7 @@
 
 								<div class="col-md-3">
 									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-										value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Inserire Nome">
+										value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Inserire Nome" required>
 
 									@error('name')
 										<span class="invalid-feedback" role="alert">
@@ -30,7 +30,8 @@
 
 								<div class="col-md-3">
 									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-										value="{{ old('email') }}" autocomplete="email" placeholder="Inserire E-mail">
+										value="{{ old('email') }}" autocomplete="email" placeholder="Inserire E-mail" required
+										pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Inserisci una mail in formato valido">
 
 									@error('email')
 										<span class="invalid-feedback" role="alert">
@@ -45,7 +46,7 @@
 
 								<div class="col-md-3">
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-										name="password" value="{{ old('password') }}" placeholder="Inserire password">
+										name="password" value="{{ old('password') }}" placeholder="Inserire password" required>
 
 									@error('password')
 										<span class="invalid-feedback" role="alert">
@@ -59,7 +60,7 @@
 
 								<div class="col-md-3">
 									<input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-										value="{{ old('password-confirm') }}" autocomplete="new-password"placeholder="Confermare Password">
+										value="{{ old('password-confirm') }}" autocomplete="new-password"placeholder="Confermare Password" required>
 								</div>
 							</div>
 
@@ -68,7 +69,8 @@
 
 								<div class="col-md-3">
 									<input id="p_iva" type="text" class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-										value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus placeholder="Inserire P.Iva">
+										value="{{ old('p_iva') }}" autocomplete="p_iva" autofocus placeholder="Inserire P.Iva" required
+										pattern="[0-9]{11}" title="Inserisci 11 cifre">
 
 									@error('p_iva')
 										<span class="invalid-feedback" role="alert">
@@ -83,7 +85,7 @@
 								<div class="col-md-3">
 									<input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror"
 										name="restaurant_name" value="{{ old('restaurant_name') }}" autocomplete="restaurant_name" autofocus
-										placeholder="Inserire nome ristorante">
+										placeholder="Inserire nome ristorante" required>
 
 									@error('restaurant_name')
 										<span class="invalid-feedback" role="alert">
@@ -93,12 +95,13 @@
 								</div>
 							</div>
 
-							<div class="mb-4 row">
+							<div class=" row">
 								<label for="Address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
 								<div class="col-md-10">
 									<input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address"
-										value="{{ old('address') }}" autocomplete="address" autofocus placeholder="Inserire indirizzo">
+										value="{{ old('address') }}" autocomplete="address" autofocus title="Inserire Via , n° civico(Via Rossi, 11)"
+										placeholder="Inserire indirizzo" pattern="^[a-zA-Z]+\s[a-zA-Z]+,\s\d+$" required>
 
 									@error('address')
 										<span class="invalid-feedback" role="alert">
@@ -123,19 +126,25 @@
 								</div>
 
 								<label for="category">Categorie:</label>
-								<div class="d-flex flex-row">
+								<div class="d-flex flex-column  @error('categories') is-invalid @enderror">
 									@foreach ($categories as $category)
 										<div class="form-check">
 
-											<label class="form-check-label" for="category-{{ $category->id }}">{{ $category->label }}</label>
+											<label class="form-check-label @error('categories') text-danger @enderror"
+												for="category-{{ $category->id }}">{{ $category->label }}</label>
 
-											<input class="form-check-input" type="checkbox" name="categories[]" id="category-{{ $category->id }}"
-												value="{{ $category->id }}" {{-- @if (in_array($category->id, old('categories', $project_technologies ?? []))) checked @endif --}}>
+											<input class="form-check-input @error('categories') is-invalid @enderror" type="checkbox"
+												name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}" {{-- @if (in_array($category->id, old('categories', $project_technologies ?? []))) checked @endif --}}>
 										</div>
 									@endforeach
 								</div>
-
-								<div class="mb-4 row">
+								<p id="error-message" class="text-danger"></p>
+								@error('categories')
+									<div class="invalid-feedback">
+										<strong>{{ $message }}</strong>
+									</div>
+								@enderror
+								<div class="mt-4 row">
 									<div class="col-md-4">
 										<button type="submit" class="btn btn-primary">
 											{{ __('Register') }}
@@ -148,4 +157,28 @@
 			</div>
 		</div>
 	</div>
+
+	{{-- funzione che controlla che almeno una checkbox sia checked, in caso contrario mostra un messaggio di errore e blocca l'invio del form --}}
+	<script>
+		function validateForm() {
+			const checkboxes = document.getElementsByName('categories[]');
+			let checked = false;
+
+			for (var i = 0; i < checkboxes.length; i++) {
+				if (checkboxes[i].checked) {
+					checked = true;
+					break;
+				}
+			}
+			var errorMessageElement = document.getElementById('error-message');
+			if (!checked) {
+				errorMessageElement.textContent = "Seleziona almeno una checkbox.";
+				return false; // Blocca l'invio del form
+			} else {
+				errorMessageElement.textContent = ""; // Resetta il messaggio di errore
+			}
+
+			return true; // Permetti l'invio del form
+		}
+	</script>
 @endsection
