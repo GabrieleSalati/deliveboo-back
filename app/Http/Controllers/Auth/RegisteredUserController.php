@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'p_iva' => ['required', 'numeric', 'digits:11', 'unique:'.Restaurant::class],
             'address' => ['required', 'string', 'max:255', 'unique:'.Restaurant::class],
             'picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
-            'categories'=> ["nullable",'exists:categories,id']
+            'categories'=> ["required",'exists:categories,id']
           ], 
           [
             'name.required' => 'Nome e cognome dell\'utente sono obbligatori',
@@ -71,6 +71,9 @@ class RegisteredUserController extends Controller
             
             'picture.image' => 'Il file caricato deve essere un\' immagine',
             'picture.mimes' => 'Le estensioni dei file accettate sono: jpg,png,jpeg.',
+
+            'categories.required' => 'Seleziona almeno una categoria',
+
             
           ]);
         $data = $request->all();
