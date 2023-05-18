@@ -124,7 +124,7 @@ class DishController extends Controller
      public function destroy(Dish $dish)
     {   
         if(Auth::user()->restaurant->id == $dish->restaurant_id) {
-
+          if($dish->picture) Storage::delete($dish->picture);
           $dish->delete();
           return redirect()->route('dishes.index');
         }
@@ -140,7 +140,7 @@ class DishController extends Controller
           'description' =>'required|string',
           'price' =>'required|numeric|min:0',
           'picture' =>'nullable|image|mimes:jpg,png,jpeg',
-          'visible' =>'boolean',
+            'visible' =>'boolean',
         ],
         [
           'name.required' => 'Il nome del piatto è obbligatorio',
