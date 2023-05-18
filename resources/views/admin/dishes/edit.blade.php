@@ -47,7 +47,7 @@
 
 								<div class="col-md-3">
 									<input id="price" type="price" class="form-control @error('price') is-invalid @enderror" name="price"
-										autocomplete="new-price" value="{{ old('name', $dish->price) }}">
+										autocomplete="new-price" value="{{ old('price', $dish->price) }}">+
 
 									@error('price')
 										<span class="invalid-feedback" role="alert">
@@ -74,7 +74,8 @@
 
 								<div class="mb-4 row ">
 									<div class="col-md-5">
-										<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i class="bi bi-arrow-left"></i></a>
+										<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i
+												class="bi bi-arrow-left"></i></a>
 									</div>
 									<div class="col-md-5">
 										<button type="submit" class="btn btn-primary">
