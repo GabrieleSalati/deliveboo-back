@@ -41,7 +41,7 @@
 								</div>
 							</div>
 
-							<div class="mb-4 row">
+							<div class="mb-1 row">
 								<label for="price" class="col-md-3 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
 								<div class="col-md-3">
@@ -65,14 +65,14 @@
 
 								<div class="mb-4 row">
 									<label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Visibilita\'') }}</label>
-									<select id="visible" name="visible" class="form-select" aria-label="Default select example">
+									<select id="visible" name="visible" class="form-select ms-2" aria-label="Default select example">
 										<option selected value="0">No</option>
 										<option value="1">Si</option>
 									</select>
 								</div>
 
-								<div class="mb-4 row ">
-									<div class="col-md-4">
+								<div class="row ">
+									<div class="col d-flex justify-content-center">
 										<button type="submit" class="btn btn-primary">
 											{{ __('Crea piatto') }}
 										</button>
@@ -81,6 +81,9 @@
 						</form>
 					</div>
 				</div>
+			</div>
+			<div class="my-5">
+				<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index') }}"><i class="bi bi-arrow-left"></i></a>
 			</div>
 		</div>
 	</div>

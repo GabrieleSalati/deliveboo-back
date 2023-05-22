@@ -69,26 +69,22 @@
 
 								<div class="mb-4 row">
 									<label for="visible" class="col-md-4 col-form-label text-md-right">{{ __('Visibilita\'') }}</label>
-									<select id="visible" name="visible" class="form-select" aria-label="Default select example">
+									<select id="visible" name="visible" class="form-select ms-2" aria-label="Default select example">
 										<option selected value="0">No</option>
 										<option value="1">Si</option>
 									</select>
 								</div>
-
-								<div class="mb-4 row ">
-									<div class="col-md-5">
-										<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i
-												class="bi bi-arrow-left"></i></a>
-									</div>
-									<div class="col-md-5">
-										<button type="submit" class="btn btn-primary">
-											{{ __('Modifica piatto') }}
-										</button>
-									</div>
+								<div class="d-flex justify-content-center">
+									<button type="submit" class="btn btn-primary ">
+										{{ __('Modifica piatto') }}
+									</button>
 								</div>
 						</form>
 					</div>
 				</div>
+			</div>
+			<div class="my-5">
+				<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i class="bi bi-arrow-left"></i></a>
 			</div>
 		</div>
 	</div>
