@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="row d-flex justify-content-center">
-		<div class="col-6">
+	<div class="row justify-content-center">
+		<div class="col-lg-6">
 			{{-- @dump($restaurant) --}}
 			@if (isset($restaurant))
 				<section class="card my-5">
 					<img src="{{ $restaurant->getPictureUri() }}" class="card-img-top img-fluid" alt="restaurant image">
-					<div class="card-body">
+					<div class="card-body d-flex flex-column">
 						<h5 class="card-title mb-3">{{ $restaurant->restaurant_name }}</h5>
 
 						<p class="card-text">
@@ -29,7 +29,7 @@
 							<strong> Email: </strong> {{ $user_data['email'] }}
 						</p>
 
-						<a href="{{ route('dishes.index') }}" class="btn btn-primary">Il mio Menù</a>
+						<a href="{{ route('dishes.index') }}" class="btn btn-primary w-50 align-self-center">Il mio Menù</a>
 					</div>
 				</section>
 			@endif

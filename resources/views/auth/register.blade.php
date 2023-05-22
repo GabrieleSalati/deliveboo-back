@@ -11,8 +11,7 @@
 						<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="return validateForm()">
 							@csrf
 
-							<div class="mb-4
-                            row">
+							<div class="mb-4 row">
 								<label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Nome e Cognome') }}</label>
 
 								<div class="col-md-3">
@@ -95,7 +94,7 @@
 								</div>
 							</div>
 
-							<div class=" row">
+							<div class="mb-4 row">
 								<label for="Address" class="col-md-2 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
 								<div class="col-md-10">
@@ -124,33 +123,36 @@
 										</span>
 									@enderror
 								</div>
+							</div>
 
-								<label for="category">Categorie:</label>
-								<div class="d-flex flex-column  @error('categories') is-invalid @enderror">
+							<div class="row d-flex justify-content-between">
+								<label class="col-md-2 col-form-label text-md-right">Categorie:</label>
+								<div class="col-md-10 d-flex flex-wrap">
 									@foreach ($categories as $category)
-										<div class="form-check">
-
+										<div class="form-check col-md-4 ms-4 p-1 rounded">
 											<label class="form-check-label @error('categories') text-danger @enderror"
 												for="category-{{ $category->id }}">{{ $category->label }}</label>
 
 											<input class="form-check-input @error('categories') is-invalid @enderror" type="checkbox"
-												name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}" {{-- @if (in_array($category->id, old('categories', $project_technologies ?? []))) checked @endif --}}>
+												name="categories[]" id="category-{{ $category->id }}" value="{{ $category->id }}">
 										</div>
 									@endforeach
 								</div>
-								<p id="error-message" class="text-danger"></p>
+								<p id="error-message" class="col-md-10 offset-md-2 text-danger"></p>
 								@error('categories')
-									<div class="invalid-feedback">
+									<div class="col-md-10 offset-md-2 invalid-feedback">
 										<strong>{{ $message }}</strong>
 									</div>
 								@enderror
-								<div class="mt-4 row">
-									<div class="col-md-4">
-										<button type="submit" class="btn btn-primary">
-											{{ __('Register') }}
-										</button>
-									</div>
+							</div>
+
+							<div class="mt-4 row">
+								<div class="col-md-4 d-flex justify-content-center">
+									<button type="submit" class="btn btn-primary">
+										{{ __('Register') }}
+									</button>
 								</div>
+							</div>
 						</form>
 					</div>
 				</div>
