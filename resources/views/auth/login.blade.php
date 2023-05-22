@@ -68,7 +68,14 @@
 								</div>
 							</div>
 						</form>
+						<div class="mb-4 row ">
+							<div class="col-md-8 offset-md-4">
+								<p class="">Non hai ancora un account? <a class="px-2"
+										href="{{ route('register') }}">{{ __('Registrati') }}</a></p>
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
