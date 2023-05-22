@@ -22,7 +22,7 @@
 					@forelse ($dishes as $dish)
 						<tr class="text-center">
 							<th scope="row">{{ $dish->id }}</th>
-							<td class="fw-bold">{{ $dish->name }}</td>
+							<td class="text-start fw-bold">{{ $dish->name }}</td>
 							<td class="text-start">{{ $dish->description }}</td>
 							<td>{{ $dish->price }}€</td>
 							<td> {{ $dish->visible ? 'Si' : 'No' }}</td>

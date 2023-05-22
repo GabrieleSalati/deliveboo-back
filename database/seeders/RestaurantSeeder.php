@@ -42,14 +42,14 @@ class RestaurantSeeder extends Seeder
                 'p_iva' => '34567891012',
                 'restaurant_name' => 'Ristorante Buddha',
                 'address' => 'Via Navigli, 5, Milano',
-                'picture' => 'https://th.bing.com/th/id/OIP.bj_egMNRUCooAc7tnGAwvQHaE7?pid=ImgDet&rs=1',
+                'picture' => 'https://www.floornature.it/media/photos/1/17523/01_DAAA-Haus_Trishna_restaurant_ph-Diana_Iskander_full.jpg',
             ],
             [
                 'user_id' => '5',
                 'p_iva' => '45678910123',
                 'restaurant_name' => 'Mythos',
                 'address' => 'Via Bergamo, 7, Milano',
-                'picture' => 'https://img.italiaonline.it/0WO5p000002tAbHGAU_Mythosesterno.jpg',
+                'picture' => 'https://www.ristorantegrecozorba.it/wp-content/uploads/2022/03/slide3.jpg',
             ],
             [
                 'user_id' => '6',
