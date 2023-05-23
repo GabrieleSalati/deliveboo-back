@@ -31,7 +31,7 @@ class OrderReceivedMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Order Received Mail',
+            subject: 'Order notification from' . env('$APP_NAME')
         );
     }
 
@@ -43,7 +43,7 @@ class OrderReceivedMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.orders.received',
         );
     }
 
