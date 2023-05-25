@@ -9,14 +9,14 @@
 
 <body>
     <h1>Ordine ricevuto, saremo da lei in un attimo!</h1>
-    <ul>
+    <ul @foreach ($orders as $order) @endforeach>
         <h2>Riepilogo ordine:</h2>
-        <li>{{ 'total_bill' }}</li>
-        <li>{{ 'bill_no_shipping' }}</li>
-        <li>{{ 'guest_name' }}</li>
-        <li>{{ 'email' }}</li>
-        <li>{{ 'address' }}</li>
-        <li>{{ 'telephone' }}</li>
+        <li>{{ $order->total_bill }}</li>
+        <li>{{ $order->bill_no_shipping }}</li>
+        <li>{{ $order->guest_name }}</li>
+        <li>{{ $order->email }}</li>
+        <li>{{ $order->address }}</li>
+        <li>{{ $order->telephone }}</li>
     </ul>
 </body>
 
