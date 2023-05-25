@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Restaurant;
+use App\Models\User;
+use App\Models\Order;
+
 use App\Mail\OrderReceivedMail;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -45,10 +48,13 @@ class OrderController extends Controller
         $order->save();
 
         $mail = new OrderReceivedMail($order);
-        $user_email = Auth::user()->email;
-        Mail::to($user_email)->send($mail);
+        // $user_email = Auth::user()->email;
+        $restaurant = Restaurant::where('id', $request->restaurant_id)->get();
+        $user_email = User::select('email')->where('id', $restaurant->user_id)->get();
+        dd($user_email);
+        Mail::to($order->email)->send($mail);
 
-        return response()->json(['success' => 'true']);
+        return response()->json()->redirect("admin.restaurants.show",$order);
     }
 
     /**

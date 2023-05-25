@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use App\Models\Restaurant;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
@@ -22,6 +23,11 @@ class DishController extends Controller
     {
       $restaurant_id = Auth::user()->restaurant->id;
       $dishes = Dish::where('restaurant_id', $restaurant_id)->orderBy("name", "ASC")->get();
+
+      $restaurant = Restaurant::where('id', '5');
+        $user_email = User::where('id', '5');
+        dd($restaurant);
+        // dd($user_email);
   
       return view('admin.dishes.index')->with('dishes', $dishes);
     }
