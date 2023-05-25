@@ -6,7 +6,7 @@
             <thead>
                 <tr class=" text-center">
                     <th scope="col">ID</th>
-                    <th scope="col">Nome Piatto</th>
+                    <th scope="col">Cliente</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Prezzo</th>
                     <th scope="col">Visibile</th>
