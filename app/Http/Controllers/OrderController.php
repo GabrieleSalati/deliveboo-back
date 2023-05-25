@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\OrderReceivedMail;
+use App\Models\Dish;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -16,11 +17,24 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $user_id = Auth::id();
-        // $orders = Order::where('restaurant_id', $user_id);
-        // return view("admin.orders.index",compact('orders'));
+        
+        //id ristoratore autenticato
+        $user_id = Auth::id();       
+        
+        //dati ristorante con id=user_id
+        $restaurant_data = DB::table('restaurants')->find($user_id);
+
+        $orders = Order::select('orders.*')
+            ->join('dish_order', 'orders.id', '=', 'dish_order.order_id')
+            ->join('dishes', 'dish_order.dish_id', '=', 'dishes.id')
+            ->join('restaurants', 'dishes.restaurant_id', '=', 'restaurants.id')
+            ->where('restaurants.id', $restaurant_data->id)
+            ->get();
+
+
+        return view("admin.orders.index",compact('orders'));
     }
 
     /**

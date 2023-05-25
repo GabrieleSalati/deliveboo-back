@@ -22,8 +22,8 @@
                         <td class="text-start">{{ $order->email }}</td>
                         <td>{{ $order->address }}€</td>
                         <td> {{ $order->telephone }}</td>
-                        <td> {{ $order->total_bill }}</td>
                         <td> {{ $order->bill_no_shipping }}</td>
+                        <td> {{ $order->total_bill }}</td>
                         {{-- <td class="action-cell">
                             <a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.edit', [$dish]) }}"><i class="bi bi-wrench-adjustable"></i></a>
                             <a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.show', [$dish]) }}"><i class="bi bi-zoom-in"></i></a>

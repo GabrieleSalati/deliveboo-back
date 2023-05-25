@@ -24,8 +24,8 @@ class OrderController extends Controller
     public function index()
     {
         // $orders = Order::where('status', 1);
-        $orders = Order::all();
-        return view("admin.orders.index",compact('orders'));
+        // $orders = Order::all();
+        // return view("admin.orders.index",compact('orders'));
     }
 
     /**

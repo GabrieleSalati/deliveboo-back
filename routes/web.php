@@ -36,6 +36,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->resource('/dishes', DishController::class);
-// Route::middleware(['auth'])->resource('/orders', OrderController::class);
+Route::middleware(['auth'])->resource('/orders', OrderController::class);
 // Route::middleware(['auth'])->resource('/restaurants', RestaurantController::class);
 require __DIR__.'/auth.php';
