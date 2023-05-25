@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderReceivedMail;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -35,7 +38,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mail = new OrderReceivedMail($order);
+        $user_email = Auth::user()->email;
+        Mail::to($user_email)->send($mail);
     }
 
     /**
