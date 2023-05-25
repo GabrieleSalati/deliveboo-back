@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RestaurantController;
+
  
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +36,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->resource('/dishes', DishController::class);
+// Route::middleware(['auth'])->resource('/orders', OrderController::class);
 // Route::middleware(['auth'])->resource('/restaurants', RestaurantController::class);
 require __DIR__.'/auth.php';

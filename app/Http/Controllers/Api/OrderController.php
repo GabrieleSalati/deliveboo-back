@@ -25,7 +25,7 @@ class OrderController extends Controller
     {
         // $orders = Order::where('status', 1);
         $orders = Order::all();
-        return response()->json(compact('orders'));
+        return view("admin.orders.index",compact('orders'));
     }
 
     /**

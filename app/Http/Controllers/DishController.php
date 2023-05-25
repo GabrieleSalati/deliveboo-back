@@ -24,13 +24,6 @@ class DishController extends Controller
     {
       $restaurant_id = Auth::user()->restaurant->id;
       $dishes = Dish::where('restaurant_id', $restaurant_id)->orderBy("name", "ASC")->get();
-
-      $restaurant = DB::table('restaurants')->find($restaurant_id);
-      // Restaurant::find(5 )->get();
-        $user_email = DB::table('users')->find($restaurant->user_id);
-        // DB::table('users')->find(3);
-        dd($user_email->email);
-        // dd($user_email);
   
       return view('admin.dishes.index')->with('dishes', $dishes);
     }

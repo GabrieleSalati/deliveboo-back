@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -17,7 +18,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // $user_id = Auth::id();
+        // $orders = Order::where('restaurant_id', $user_id);
+        // return view("admin.orders.index",compact('orders'));
     }
 
     /**

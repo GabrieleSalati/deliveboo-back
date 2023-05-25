@@ -29,7 +29,10 @@
 							<strong> Email: </strong> {{ $user_data['email'] }}
 						</p>
 
-						<a href="{{ route('dishes.index') }}" class="btn btn-primary w-50 align-self-center">Il mio Menù</a>
+						<div class="d-flex justify-content-center gap-2">
+							<a href="{{ route('dishes.index') }}" class="btn btn-primary w-50 align-self-center">Il mio Menù</a>
+							<a href="{{ route('orders.index') }}" class="btn btn-secondary w-50 align-self-center">I mie Ordini</a>
+						</div>
 					</div>
 				</section>
 			@endif
