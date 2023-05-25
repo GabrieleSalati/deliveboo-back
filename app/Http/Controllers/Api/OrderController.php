@@ -51,10 +51,10 @@ class OrderController extends Controller
 
         $mail = new OrderReceivedMail($order);
         $restaurant = DB::table('restaurants')->find($request->restaurant_id);
-        
+
         $user_data = DB::table('users')->find($restaurant->user_id);
 
-        Mail::to($order->email, $user_data->email )->send($mail);
+        Mail::to([$order->email, $user_data->email])->send($mail);
 
         return response()->json($order);
     }
