@@ -32,7 +32,7 @@ class OrderController extends Controller
         $request->validate(
             [
                 'guest_name' => 'required|string',
-                'email' => 'required|string',
+                'email' => 'required|string|email',
                 'address' => 'required|string',
                 'telephone' => 'nullable|string',
                 'total_bill' => 'required',
