@@ -23,7 +23,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // $orders = Order::where('status', 1);
+        $orders = Order::all();
+        return response()->json(compact('orders'));
     }
 
     /**
