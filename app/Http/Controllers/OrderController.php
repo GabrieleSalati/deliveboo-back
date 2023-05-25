@@ -38,9 +38,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $mail = new OrderReceivedMail($order);
-        $user_email = Auth::user()->email;
-        Mail::to($user_email)->send($mail);
+        //
     }
 
     /**

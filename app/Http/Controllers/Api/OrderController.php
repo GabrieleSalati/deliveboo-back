@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Mail\OrderReceivedMail;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -28,18 +31,22 @@ class OrderController extends Controller
     {
         $request->validate(
             [
-                'guest_name' =>'required|string',
-                'email' =>'required|string',
-                'address' =>'required|string',
-                'telephone' =>'nullable|string',
+                'guest_name' => 'required|string',
+                'email' => 'required|string',
+                'address' => 'required|string',
+                'telephone' => 'nullable|string',
                 'total_bill' => 'required',
-                'bill_no_shipping' => 'required',             
-              ]
-            );
-        
+                'bill_no_shipping' => 'required',
+            ]
+        );
+
         $order = new Order;
         $order->fill($request->all());
         $order->save();
+
+        $mail = new OrderReceivedMail($order);
+        $user_email = Auth::user()->email;
+        Mail::to($user_email)->send($mail);
 
         return response()->json(['success' => 'true']);
     }
