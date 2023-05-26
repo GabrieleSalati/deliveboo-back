@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Dish;
 use Illuminate\Support\Facades\DB;
 
 
