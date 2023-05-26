@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Dish;
 use Illuminate\Support\Facades\DB;
 
 
@@ -44,12 +45,16 @@ class OrderController extends Controller
                 'telephone' => 'nullable|string',
                 'total_bill' => 'required',
                 'bill_no_shipping' => 'required',
+                'dishes' => 'required|array'
             ]
         );
 
         $order = new Order;
         $order->fill($request->all());
         $order->save();
+
+        $dishes = $request->input('dishes');
+        $order->dishes()->attach($dishes);
 
         $mail = new OrderReceivedMail($order);
         $restaurant = DB::table('restaurants')->find($request->restaurant_id);
