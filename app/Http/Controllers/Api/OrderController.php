@@ -45,7 +45,6 @@ class OrderController extends Controller
                 'telephone' => 'nullable|string',
                 'total_bill' => 'required',
                 'bill_no_shipping' => 'required',
-                'dishes' => 'required|array'
             ]
         );
 
