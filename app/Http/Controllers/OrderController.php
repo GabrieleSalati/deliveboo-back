@@ -31,6 +31,7 @@ class OrderController extends Controller
             ->join('dishes', 'dish_order.dish_id', '=', 'dishes.id')
             ->join('restaurants', 'dishes.restaurant_id', '=', 'restaurants.id')
             ->where('restaurants.id', $restaurant_data->id)
+            ->distinct()
             ->get();
 
 

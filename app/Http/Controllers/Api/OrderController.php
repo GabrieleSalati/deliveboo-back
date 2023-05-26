@@ -45,11 +45,23 @@ class OrderController extends Controller
                 'total_bill' => 'required',
                 'bill_no_shipping' => 'required',
             ]
+
         );
 
         $order = new Order;
         $order->fill($request->all());
         $order->save();
+
+      
+        for ($i = 0; $i < count($request->dishesId); $i++) {
+        $dishId = $request->dishesId[$i];
+        $quantity = $request->dishesQty[$i];
+
+        $order->dishes()->attach($dishId, ['quantity' => $quantity]);
+        }
+
+          
+            // $order->dishes()->attach($id,['quantity' => $dish[0]]);
 
         $mail = new OrderReceivedMail($order);
         $restaurant = DB::table('restaurants')->find($request->restaurant_id);
@@ -58,7 +70,7 @@ class OrderController extends Controller
 
         Mail::to([$order->email, $user_data->email])->send($mail);
 
-        return response()->json($order);
+        return response()->json($request);
     }
 
     /**
