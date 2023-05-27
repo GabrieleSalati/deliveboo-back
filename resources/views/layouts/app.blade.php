@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="icon" type="image/svg" href="{{ asset('images/Logo.svg') }}" />
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,18 +22,18 @@
 <body>
 	<div id="app">
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                
-                <ul class="navbar-nav me-auto">
-                    <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-                        <div class="logo_laravel">DELIVEBOO</div>
-                    </a>
+		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+			<div class="container">
 
-                    <a class="navbar-brand d-flex align-items-center" href="{{ url('http://localhost:5173/') }}">
-                        <div class="logo_laravel">Front-office</div>
-                    </a>
-                </ul>
+				<ul class="navbar-nav me-auto">
+					<a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+						<div class="logo_laravel">DELIVEBOO</div>
+					</a>
+
+					<a class="navbar-brand d-flex align-items-center" href="{{ url('http://localhost:5173/') }}">
+						<div class="logo_laravel">Front-office</div>
+					</a>
+				</ul>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

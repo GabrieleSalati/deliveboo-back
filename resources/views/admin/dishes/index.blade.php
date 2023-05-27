@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Menù')
 
 @section('content')
 	<div class="container">
@@ -27,8 +28,10 @@
 							<td>{{ $dish->price }}€</td>
 							<td> {{ $dish->visible ? 'Si' : 'No' }}</td>
 							<td class="action-cell">
-								<a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.edit', [$dish]) }}"><i class="bi bi-wrench-adjustable"></i></a>
-								<a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.show', [$dish]) }}"><i class="bi bi-zoom-in"></i></a>
+								<a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.edit', [$dish]) }}"><i
+										class="bi bi-wrench-adjustable"></i></a>
+								<a class="btn btn-primary mx-1 my-1 px-2" href="{{ route('dishes.show', [$dish]) }}"><i
+										class="bi bi-zoom-in"></i></a>
 								<button class="btn btn-danger bi bi-trash mx-1 my-1 px-2" data-bs-toggle="modal"
 									data-bs-target="#delete-{{ $dish->id }}"></button>
 							</td>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Modifica' . ' ' . $dish->name)
 
 @section('content')
 	<div class="container mt-4">
@@ -84,7 +85,8 @@
 				</div>
 			</div>
 			<div class="my-5">
-				<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i class="bi bi-arrow-left"></i></a>
+				<a class="btn btn-primary mx-1 py-1 px-2" href="{{ route('dishes.index', [$dish]) }}"><i
+						class="bi bi-arrow-left"></i></a>
 			</div>
 		</div>
 	</div>

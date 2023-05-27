@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', $restaurant->restaurant_name)
 @section('content')
 	<div class="row justify-content-center">
 		<div class="col-lg-6">
