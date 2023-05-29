@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Restaurant;
 
-class RestaurantController extends Controller
+class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,22 +14,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::orderBy('created_at')->with('categories')->get();
-        foreach($restaurants as $restaurant) {
-            $restaurant->picture = $restaurant->getPictureUri();
-
-          }
-          return response()->json(compact('restaurants'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        
     }
 
     /**
@@ -51,19 +35,6 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $restaurant = Restaurant::where('id', $id)->with('dishes')->get();
-
-        return response()->json($restaurant);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

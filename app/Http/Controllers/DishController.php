@@ -24,8 +24,11 @@ class DishController extends Controller
     {
       $restaurant_id = Auth::user()->restaurant->id;
       $dishes = Dish::where('restaurant_id', $restaurant_id)->where('visible', true)->orderBy("name", "ASC")->get();
-  
-      return view('admin.dishes.index')->with('dishes', $dishes);
+        foreach($dishes as $dish) {
+            $dish->picture = $dish->getPictureUri();
+
+          }
+      return view('admin.dishes.index', compact('dishes'));
     }
 
     /**

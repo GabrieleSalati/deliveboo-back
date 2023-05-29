@@ -29,9 +29,9 @@ class Restaurant extends Model
       if(!empty($this->picture)) {
         if(Str::startsWith($this->picture, 'http')) return $this->picture; 
 
-        else return url('storage/' . $this->picture);
+        else         return url('storage/' . $this->picture);
       }
 
-      else return 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+      else     return 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
     } 
 }

@@ -33,10 +33,13 @@
 					</tr>
 				@empty
 					<tr>
-						<td class="text-center" colspan="6">Non hai ordini per il momento!</td>
+						<td class="text-center" colspan="7">Non ci sono ordini!</td>
 					</tr>
 				@endforelse
 			</tbody>
 		</table>
+		<div id="buttons" class="mt-5">
+			<a href="{{ url('/home') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left"></i></a>
+		</div>
 	</div>
 @endsection

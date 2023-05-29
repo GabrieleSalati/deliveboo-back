@@ -25,6 +25,9 @@ Route::get('/', function () {
 
 Route::get('/home', [RestaurantController::class, 'show'])->middleware('auth')->name('home');
 
+Route::get('storage/{path}', function ($path) {
+    return response()->file(storage_path('app/public/' . $path));
+})->where('path', '.*');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

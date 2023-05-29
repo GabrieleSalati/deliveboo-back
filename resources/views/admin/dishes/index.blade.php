@@ -38,7 +38,7 @@
 						</tr>
 					@empty
 						<tr>
-							<td class="text-center" colspan="6">Devi ancora aggiungere un piatto!</td>
+							<td class="text-center" colspan="6">Non ci sono piatti nel tuo menù!</td>
 						</tr>
 					@endforelse
 				</tbody>
