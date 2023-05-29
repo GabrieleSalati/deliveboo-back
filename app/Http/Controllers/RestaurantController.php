@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Dish;
 
 class RestaurantController extends Controller
 {

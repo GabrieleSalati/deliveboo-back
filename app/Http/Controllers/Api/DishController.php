@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Dish;
 
 class DishController extends Controller
 {
@@ -14,7 +16,12 @@ class DishController extends Controller
      */
     public function index()
     {
-        
+        $restaurant_id = Auth::user()->restaurant->id;
+        $dishes = Dish::where('restaurant_id', $restaurant_id)->where('visible', true)->orderBy("name", "ASC")->get();
+        foreach ($dishes as $dish) {
+            $dish->picture = $dish->getPictureUri();
+        }
+        return response()->json(compact('dishes'));
     }
 
     /**
